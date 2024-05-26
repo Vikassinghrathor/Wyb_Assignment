@@ -24,7 +24,7 @@ Welcome to Ultimate Tic Tac Toe! This is a web-based game built using React JS a
 1. Clone the repository:
 
     ```bash
-    git clone 
+    git clone `https://github.com/Vikassinghrathor/Wyb_Assignment.git`
     ```
 
 2. Navigate into the project directory:

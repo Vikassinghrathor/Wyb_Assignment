@@ -5,21 +5,23 @@ const SettingsForm = (props) => {
     boardSize: props.defaultValues.boardSize,
     clock: props.defaultValues.clock,
     time: props.defaultValues.time,
+    winStreak: props.defaultValues.winStreak,
   });
 
   const handleChange = (event) => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-
-    setState({
-      ...state,
-      [name]: value,
-    });
+    setState({ ...state, [name]: value });
   };
 
   const handleSubmit = (event) => {
-    props.submitCallback(state.boardSize, state.clock, state.time);
+    props.submitCallback(
+      state.boardSize,
+      state.clock,
+      state.time,
+      state.winStreak
+    );
     event.preventDefault();
   };
 
@@ -32,24 +34,24 @@ const SettingsForm = (props) => {
           className="input"
           name="boardSize"
           type="number"
-          min="2"
+          min="3"
           max="10"
           value={state.boardSize}
           onChange={handleChange}
         />
       </label>
-      {/* <label
-        style={{ padding: "20px" }}
-        className="settings-label timer ClockBtn"
-      >
-        Clock{" "}
+      <label style={{ padding: "20px" }} className="settings-label winStreak">
+        Win streak{" "}
         <input
-          name="clock"
-          type="checkbox"
-          checked={state.clock}
+          className="input"
+          name="winStreak"
+          type="number"
+          min="3"
+          max={state.boardSize}
+          value={state.winStreak}
           onChange={handleChange}
         />
-      </label> */}
+      </label>
       {state.clock && (
         <label className="settings-label">
           Time (min){" "}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import SettingsForm from "./components/SettingsForm";
 import Game from "./components/Game";
 import "./index.css";
@@ -9,12 +9,12 @@ const App = () => {
     clock: false,
     time: 10,
     matchID: 0,
+    winStreak: 3,
   });
-
   const [playerXName, setPlayerXName] = useState("Player X");
   const [playerOName, setPlayerOName] = useState("Player O");
 
-  const newGame = (size, clock, time) => {
+  const newGame = (size, clock, time, winStreak) => {
     const playerNameX = prompt("Enter name for Player X:", "Player X");
     const playerNameO = prompt("Enter name for Player O:", "Player O");
     setPlayerXName(playerNameX || "Player X");
@@ -23,6 +23,7 @@ const App = () => {
       boardSize: size,
       clock: clock,
       time: time,
+      winStreak: winStreak,
       matchID: prevState.matchID + 1,
     }));
   };
@@ -38,6 +39,7 @@ const App = () => {
           size={state.boardSize}
           clock={state.clock}
           time={state.time}
+          winStreak={state.winStreak}
           playerXName={playerXName}
           playerOName={playerOName}
           renderInfo={true}
